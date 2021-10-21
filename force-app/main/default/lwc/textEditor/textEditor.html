@@ -1,55 +1,59 @@
 <template>
-    <lightning-card  title="Text Editor">
-        <div class="c-container-view">
-            <lightning-layout multiple-rows="true">
-                <lightning-layout-item padding="around-small" size="12">
-                    <div class="page-section page-header">
-                        <div class="slds-float_right">
-                            <lightning-button-icon icon-name="utility:edit" variant="bare" alternative-text="Edit" class="slds-m-left_xx-small" title="Edit"></lightning-button-icon>
+    <lightning-card>
+        <template if:true={viewMode}>
+            <div class="c-container-view">
+                <lightning-layout multiple-rows="true">
+                    <lightning-layout-item padding="around-small" size="12">
+                        <div class="page-section page-header">
+                            <div class="slds-float_right">
+                                <lightning-button-icon-stateful icon-name="utility:edit" variant="bare" alternative-text="Edit" class="slds-m-left_xx-small" title="Edit" onclick={handleEditClick}></lightning-button-icon-stateful>
+                            </div>
                         </div>
-                    </div>
-                </lightning-layout-item>
-                <lightning-layout-item padding="around-small" size="12">
-                    <lightning-layout>
-                        <lightning-layout-item padding="around-small" size="12">
-                            <div class="page-section page-main">
-                                <p class='slds-align_absolute-center'>View mode</p>
-                            </div>
-                        </lightning-layout-item>
-                    </lightning-layout>
-                </lightning-layout-item>
-                <lightning-layout-item padding="around-small" size="12">
-                    <div class="page-footer page-section">                  
-                    </div>
-                </lightning-layout-item>
-            </lightning-layout>
-        </div>
-        <div class="c-container-edit">
-            <lightning-layout multiple-rows="true">
-                <lightning-layout-item padding="around-small" size="12">
-                    <div class="page-section page-header">
-                    </div>
-                </lightning-layout-item>
-                <lightning-layout-item padding="around-small" size="12">
-                    <lightning-layout>
-                        <lightning-layout-item padding="around-small" size="12">
-                            <div class="page-section page-main">
-                                <p class='slds-align_absolute-center'>Edit mode</p>
-                            </div>
-                        </lightning-layout-item>
-                    </lightning-layout>
-                </lightning-layout-item>
-                <lightning-layout-item padding="around-small" size="12">
-                    <div class="page-footer page-section page-footer-gray">
-                        <div class='slds-align_absolute-center'>
-                            <!-- Button group: simple buttons -->
-                                <lightning-button label="Cancel"></lightning-button>&nbsp;&nbsp;&nbsp;
-                                <lightning-button label="Save"></lightning-button>
-                        </div>                    
-                    </div>
-                </lightning-layout-item>
-            </lightning-layout>
-        </div>
+                    </lightning-layout-item>
+                    <lightning-layout-item padding="around-small" size="12">
+                        <lightning-layout>
+                            <lightning-layout-item padding="around-small" size="12">
+                                <div class="page-section page-main">
+                                    <p class='slds-align_absolute-center'>View mode</p>
+                                </div>
+                            </lightning-layout-item>
+                        </lightning-layout>
+                    </lightning-layout-item>
+                    <lightning-layout-item padding="around-small" size="12">
+                        <div class="page-footer page-section">                  
+                        </div>
+                    </lightning-layout-item>
+                </lightning-layout>
+            </div>
+        </template>
+        <template if:true={editMode}>
+            <div class="c-container-edit">
+                <lightning-layout multiple-rows="true">
+                    <lightning-layout-item padding="around-small" size="12">
+                        <div class="page-section page-header">
+                        </div>
+                    </lightning-layout-item>
+                    <lightning-layout-item padding="around-small" size="12">
+                        <lightning-layout>
+                            <lightning-layout-item padding="around-small" size="12">
+                                <div class="page-section page-main">
+                                    <p class='slds-align_absolute-center'>Edit mode</p>
+                                </div>
+                            </lightning-layout-item>
+                        </lightning-layout>
+                    </lightning-layout-item>
+                    <lightning-layout-item padding="around-small" size="12">
+                        <div class="page-footer page-section page-footer-gray">
+                            <div class='slds-align_absolute-center'>
+                                <!-- Button group: simple buttons -->
+                                    <lightning-button label="Cancel" onclick={handleViewClick}></lightning-button>&nbsp;&nbsp;&nbsp;
+                                    <lightning-button label="Save" onclick={handleSaveClick}></lightning-button>
+                            </div>                    
+                        </div>
+                    </lightning-layout-item>
+                </lightning-layout>
+            </div>
+        </template>
     </lightning-card>
 
 </template>
